@@ -1,4 +1,4 @@
-# Current Network Setup
+# Current Scripts Structure
 
 ## [Unsorted Commands](/Command%20Reference%20Pages/unsorted.md)
 *Put any new commands into this unsorted commands file and they will be sorted and linked on the main readme*
