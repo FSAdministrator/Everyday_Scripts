@@ -1,12 +1,12 @@
 <#
 Script       : ascii.ps1
-Author       : Ryan Fournier
+Author       : Felix Saville
 Date Created : 09/05/2018
 Date Updated : 10/05/2018
 
 ##########################################################################
 ##                            Copyright Notice                          ##
-##                    Copyright (C) 2018 Ryan Fournier                  ##
+##                    Copyright (C) 2018 Felix Saville                 ##
 ##                                                                      ##
 ##     This script is free software: you can redistribute it and/or     ##
 ##    modify it under the terms of the GNU General Public License as    ##
