@@ -1,6 +1,6 @@
 ##########################################################################
 ##	Script		: VMFromCSV 1.2											##
-##	Author		: Ryan Fournier										 	##
+##	Author		: Felix Saville										 	##
 ##	Date Created: 01/12/2017											##
 ##  Date Updated: 18/01/2018											##
 ##																	 	##
@@ -8,7 +8,7 @@
 ##########################################################################
 ##							Copyright Notice							##
 ##																		##
-##					Copyright (C) 2017 Ryan Fournier 					##
+##					Copyright (C) 2017 Felix Saville				##
 ##																		##
 ##	   This script is free software: you can redistribute it and/or		##
 ##	  modify it under the terms of the GNU General Public License as	##
