@@ -85,7 +85,7 @@ Start-Sleep -Seconds 30
 
 Write-Host "McAfee Uninstall - Alternative 1"
 
-get-package -Name "McAfee Security" |% { & $_.Meta.Attributes["UninstallString"]
+get-package -Name "McAfee Security" |% { & $_.Meta.Attributes["UninstallString"] }
 
 # McAfee Uninstall - Alternative 2
 
