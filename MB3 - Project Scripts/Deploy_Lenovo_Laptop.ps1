@@ -60,10 +60,13 @@ Start-Sleep -Seconds 30
 
 # Uninstall Mcafee LiveSafe
 
-MLSVer = Get-ChildItem -Path 
+MLSVer = Get-ChildItem -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall, HKLM:\SOFTWARE\Wow6432Node\Microsoft\Widnows\CurrentVersion\Uninstall | 
 
-$app = Get-WmiObject -Class Win32_Product | Where-Object { 
-    $_.Name -match "McAfee LiveSafe" 
-}
 
-$app.Uninstall()
+
+# Redundant Code (DO NOT USE!)
+
+#$app = Get-WmiObject -Class Win32_Product | Where-Object { 
+#    $_.Name -match "McAfee LiveSafe" 
+#}
+#$app.Uninstall()
