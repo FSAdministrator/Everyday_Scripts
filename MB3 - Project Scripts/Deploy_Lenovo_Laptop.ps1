@@ -122,7 +122,7 @@ Stop-Process -Name "mcapexe" -Force -Confirm:$false
 
 Write-Host "Completing McAfee Uninstall..."
 
-& "C:\Program Files\McAfee\MSC\mcuihost.exe" /body:misp://MSCJsRes.dll::uninstall.html /id:uninstall /Silent /nointeractive | Out-Null
+& "C:\Program Files\McAfee\MSC\mcuihost.exe" /body:misp://MSCJsRes.dll::uninstall.html /id:uninstall /Silent | Out-Null
 
 
 # File Directory Cleanup
