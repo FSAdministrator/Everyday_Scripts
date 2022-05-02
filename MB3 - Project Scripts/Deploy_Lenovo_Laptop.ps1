@@ -172,14 +172,14 @@ else
 
 # File Directory Cleanup
 
-Remove-Item -LiteralPath "C:\Program Files\McAfee*" -Force -Recurse
-Remove-Item -LiteralPath "C:\Program Files\McAfee" -Force -Recurse 
-Remove-Item -LiteralPath "C:\Program Files\McAfee.com*" -Force -Recurse
-Remove-Item -LiteralPath "C:\Program Files\McAfee.com" -force -Recurse
-Remove-Item -LiteralPath "C:\Program Files\Common Files\McAfee*" -Force -Recurse
-Remove-Item -LiteralPath "C:\Program Files\Common Files\McAfee" -Force -Recurse
-Remove-Item -LiteralPath "C:\Program Files (X86)\McAfee*" -Force -Recurse
-Remove-Item -LiteralPath "C:\Program Files (X86)\McAfee" -Force -Recurse
+Remove-Item -LiteralPath "C:\Program Files\McAfee*" -Force -Verbose
+Remove-Item -LiteralPath "C:\Program Files\McAfee" -Force -Verbose
+Remove-Item -LiteralPath "C:\Program Files\McAfee.com*" -Force -Verbose
+Remove-Item -LiteralPath "C:\Program Files\McAfee.com" -force -Verbose
+Remove-Item -LiteralPath "C:\Program Files\Common Files\McAfee*" -Force -Verbose
+Remove-Item -LiteralPath "C:\Program Files\Common Files\McAfee" -Force -Verbose
+Remove-Item -LiteralPath "C:\Program Files (X86)\McAfee*" -Force -Verbose
+Remove-Item -LiteralPath "C:\Program Files (X86)\McAfee" -Force -Verbose
 
 # McAfee Services Removal
 
