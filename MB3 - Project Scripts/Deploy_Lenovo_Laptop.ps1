@@ -15,30 +15,30 @@
 
 # Stop All McAfee Services
 
-Stop-Service -Name "McAffee Activation Service" -Force
-Stop-Service -Name "McAfee AP Service" -Force
-Stop-Service -Name "McAfee Application Installer Cleanup (0108521651448370)" -Force
-Stop-Service -Name "McAfee CSP Service" -Force
-Stop-Service -Name "McAfee Firewall Core Service" -Force
-Stop-Service -Name "McAfee Module Core Service" -Force
-Stop-Service -Name "McAfee PEF Service" -Force
-Stop-Service -Name "McAfee Service Controller" -Force
-Stop-Service -Name "McAfee Validatoon Trust Protection Service" -Force
-Stop-Service -Name "McAfee WebAdvisor" -Force
+Stop-Service -Name "McAWFwk" -Force -Confirm
+Stop-Service -Name "McAPExe" -Force -Confirm
+Stop-Service -Name "0108521651448370mcinstcleanup" -Force -Confirm
+Stop-Service -Name "mccspsvc" -Force -Confirm
+Stop-Service -Name "mfefire" -Force -Confirm
+Stop-Service -Name "ModuleCoreService" -Force -Confirm
+Stop-Service -Name "PEFService" -Force -Confirm
+Stop-Service -Name "Mfemms" -Force -Confirm
+Stop-Service -Name "mfevtp" -Force -Confirm
+Stop-Service -Name "McAfee WebAdvisor" -Force -Confirm
 
 # Kill all McAfee Service Programs
 
-taskkill /f /im ModuleCoreService.exe
-taskkill /f /im MMSSHOST.exe  
-taskkill /f /im PEFService.exe 
-taskkill /f /im MfeAVSvc.exe
-taskkill /f /im mfevtps.exe
-taskkill /f /im mcsheild.exe
-taskkill /f /im McVulCtr.exe
-taskkill /f /im McUICnt.exe
-taskkill /f /im mfemms.exe
-taskkill /f /im ProtectedModuleHost.exe
-taskkill /f /im mcapexe.exe
+Stop-Process -Name "ModuleCoreService" -Force
+Stop-Process -Name "MMSSHOST" -Force  
+Stop-Process -Name "PEFService" -Force
+Stop-Process -Name "MfeAVSvc" -Force
+Stop-Process -Name "mfevtps" -Force
+Stop-Process -Name "mcsheild" -Force
+Stop-Process -Name "McVulCtr" -Force
+Stop-Process -Name "McUICnt" -Force
+Stop-Process -Name "mfemms" -Force
+Stop-Process -Name "ProtectedModuleHost" -Force
+Stop-Process -Name "mcapexe" -Force
 
 # Uninstall McAfee WebAdvisor Protection
 
