@@ -13,6 +13,10 @@
 #                                                                     #
 #######################################################################
 
+# Startup Items
+
+set-executionpolicy unrestricted
+
 # Stop All McAfee Services
 
 Stop-Service -Name "McAWFwk" -Force -Confirm
@@ -28,17 +32,17 @@ Stop-Service -Name "McAfee WebAdvisor" -Force -Confirm
 
 # Kill all McAfee Service Programs
 
-Stop-Process -Name "ModuleCoreService" -Force
-Stop-Process -Name "MMSSHOST" -Force  
-Stop-Process -Name "PEFService" -Force
-Stop-Process -Name "MfeAVSvc" -Force
-Stop-Process -Name "mfevtps" -Force
-Stop-Process -Name "mcsheild" -Force
-Stop-Process -Name "McVulCtr" -Force
-Stop-Process -Name "McUICnt" -Force
-Stop-Process -Name "mfemms" -Force
-Stop-Process -Name "ProtectedModuleHost" -Force
-Stop-Process -Name "mcapexe" -Force
+Stop-Process -Name "ModuleCoreService" -Force -Confirm:$false
+Stop-Process -Name "MMSSHOST" -Force -Confirm:$false
+Stop-Process -Name "PEFService" -Force -Confirm:$false
+Stop-Process -Name "MfeAVSvc" -Force -Confirm:$false
+Stop-Process -Name "mfevtps" -Force -Confirm:$false
+Stop-Process -Name "mcsheild" -Force -Confirm:$false
+Stop-Process -Name "McVulCtr" -Force -Confirm:$false
+Stop-Process -Name "McUICnt" -Force -Confirm:$false
+Stop-Process -Name "mfemms" -Force -Confirm:$false
+Stop-Process -Name "ProtectedModuleHost" -Force -Confirm:$false
+Stop-Process -Name "mcapexe" -Force -Confirm:$false
 
 # Uninstall McAfee WebAdvisor Protection
 
@@ -77,6 +81,68 @@ MLSVer = Get-ChildItem -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uni
 
 Start-Sleep -Seconds 30
 
+# McAfee Uninstall - Alternative 1
+
+Write-Host "McAfee Uninstall - Alternative 1"
+
+get-package -Name "McAfee Security" |% { & $_.Meta.Attributes["UninstallString"]
+
+# McAfee Uninstall - Alternative 2
+
+Write-Host "McAfee Uninstall - Alternative 2"
+
+Get-Package -Name 'McAfee Security' | Uninstall-Package -Force
+
+# McAfee Uninstall - Alternative 3
+
+Write-Host "McAfee Uninstall - Alternative 3"
+
+& "C:\Program Files\McAfee\MSC\mcuihost.exe" /body:misp://MSCJsRes.dll::uninstall.html /id:uninstall /Silent | Out-Null
+
+# McAfee Uninstall - Alternative 4
+
+Write-Host "McAfee Uninstall - Alternative 4"
+
+$McAfee = Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "McAfee Security" }
+
+$McAfee.Uninstall()
+
+# McAfee Uninstall - Alternative 5
+
+Write-Host "McAfee Uninstall - Alternative 5"
+
+$uninstall32 = gci "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | foreach { gp $_.PSPath } | ? { $_ -match "McAfee Security" } | select UninstallString
+
+$uninstall64 = gci "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" | foreach { gp $_.PSPath } | ? { $_ -match "McAfee Security" } | select UninstallString
+
+ 
+
+if ($uninstall64) {
+
+$uninstall64 = $uninstall64.UninstallString -Replace "msiexec.exe","" -Replace "/I","" -Replace "/X",""
+
+$uninstall64 = $uninstall64.Trim()
+
+Write "Uninstalling..."
+
+start-process "msiexec.exe" -arg "/X $uninstall64 /qb" -Wait}
+
+if ($uninstall32) {
+
+$uninstall32 = $uninstall32.UninstallString -Replace "msiexec.exe","" -Replace "/I","" -Replace "/X",""
+
+$uninstall32 = $uninstall32.Trim()
+
+Write "Uninstalling..."
+
+start-process "msiexec.exe" -arg "/X $uninstall32 /qb" -Wait}
+
+# If All Else Fails
+
+Start-Sleep -Seconds 60
+
+Write-Host "Please Check Control Panel For Changes..."
+
 # File Directory Cleanup
 
 Remove-Item -LiteralPath "C:\Program Files\McAfee*" -Force -Recurse
@@ -100,6 +166,12 @@ sc.exe delete "McAfee PEF Service"
 sc.exe delete "McAfee Service Controller"
 sc.exe delete "McAfee Validatoon Trust Protection Service"
 sc.exe delete "McAfee WebAdvisor"
+
+Start-Sleep -Seconds 10
+
+Write-Host "Script Complete, Restarting Device..."
+
+#Restart-Computer
 
 # Redundant Code (DO NOT USE!)
 
