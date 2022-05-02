@@ -75,16 +75,16 @@ Else
 
 # Stop All McAfee Services
 
-net stop "McAffee Activation Service"
-net stop "McAfee AP Service"
-net stop "McAfee Application Installer Cleanup (0108521651448370)"
-net stop "McAfee CSP Service"
-net stop "McAfee Firewall Core Service"
-net stop "McAfee Module Core Service"
-net stop "McAfee PEF Service"
-net stop "McAfee Service Controller"
-net stop "McAfee Validatoon Trust Protection Service"
-net stop "McAfee WebAdvisor"
+net stop "McAffee Activation Service" -force /y
+net stop "McAfee AP Service" -force /y
+net stop "McAfee Application Installer Cleanup (0108521651448370)" -force /y
+net stop "McAfee CSP Service" -force /y
+net stop "McAfee Firewall Core Service" -force /y
+net stop "McAfee Module Core Service" -force /y
+net stop "McAfee PEF Service" -force /y
+net stop "McAfee Service Controller" -force /y
+net stop "McAfee Validatoon Trust Protection Service" -force /y
+net stop "McAfee WebAdvisor" -force /y
 
 # Kill all McAfee Service Programs
 
