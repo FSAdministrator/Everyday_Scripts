@@ -19,16 +19,16 @@ set-executionpolicy unrestricted
 
 # Stop All McAfee Services
 
-Stop-Service -Name "McAWFwk" -Force -Confirm
-Stop-Service -Name "McAPExe" -Force -Confirm
-Stop-Service -Name "0108521651448370mcinstcleanup" -Force -Confirm
-Stop-Service -Name "mccspsvc" -Force -Confirm
-Stop-Service -Name "mfefire" -Force -Confirm
-Stop-Service -Name "ModuleCoreService" -Force -Confirm
-Stop-Service -Name "PEFService" -Force -Confirm
-Stop-Service -Name "Mfemms" -Force -Confirm
-Stop-Service -Name "mfevtp" -Force -Confirm
-Stop-Service -Name "McAfee WebAdvisor" -Force -Confirm
+Stop-Service -Name "McAWFwk" -Force -Confirm:$false
+Stop-Service -Name "McAPExe" -Force -Confirm:$false
+Stop-Service -Name "0108521651448370mcinstcleanup" -Force -Confirm:$false
+Stop-Service -Name "mccspsvc" -Force -Confirm:$false
+Stop-Service -Name "mfefire" -Force -Confirm:$false
+Stop-Service -Name "ModuleCoreService" -Force -Confirm:$false
+Stop-Service -Name "PEFService" -Force -Confirm:$false
+Stop-Service -Name "Mfemms" -Force -Confirm:$false
+Stop-Service -Name "mfevtp" -Force -Confirm:$false
+Stop-Service -Name "McAfee WebAdvisor" -Force -Confirm:$false
 
 # Kill all McAfee Service Programs
 
