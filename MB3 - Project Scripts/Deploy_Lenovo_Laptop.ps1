@@ -38,34 +38,14 @@ Write-Host "Checking OS version..." -ForegroundColor Yellow
 
 Write-Host "Checking for administrative rights..." -ForegroundColor Yellow
 
-### Get the ID and security principal of the current user account.
-        $myWindowsID = [System.Security.Principal.WindowsIdentity]::GetCurrent();
-        $myWindowsPrincipal = New-Object System.Security.Principal.WindowsPrincipal($myWindowsID);
-
-### Get the security principal for the administrator role.
-    $adminRole = [System.Security.Principal.WindowsBuiltInRole]::Administrator;
-
-### Check to see if we are currently running as an administrator.
-    if ($myWindowsPrincipal.IsInRole($adminRole))
-        {
-### We are running as an administrator, so change the title and background colour to indicate this.
-        	Write-Host "We are running as administrator, changing the title to indicate this." -ForegroundColor Green
-        	$Host.UI.RawUI.WindowTitle = $myInvocation.MyCommand.Definition + "(Elevated)";
+# Self-elevate the script
+if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
+    if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
+     $CommandLine = "-File `"" + $MyInvocation.MyCommand.Path + "`" " + $MyInvocation.UnboundArguments
+     Start-Process -FilePath PowerShell.exe -Verb Runas -ArgumentList $CommandLine
+     Exit
     }
-else
-    {
-	    Write-Host "We are not running as administrator. Relaunching as administrator." -ForegroundColor Yellow
-### We are not running as admin, so relaunch as admin.
-    	$NewProcess = New-Object System.Diagnostics.ProcessStartInfo "PowerShell";
-### Specify the current script path and name as a parameter with added scope and support for scripts with spaces in it's path.
-	    $NewProcess.Arguments = "& '" + $script:MyInvocation.MyCommand.Path + "'"
-### Indicate that the process should be elevated.
-    	$NewProcess.Verb = "runas";
-### Start the new process
-	    [System.Diagnostics.Process]::Start($newProcess);
-### Exit from the current, unelevated, process.
-	Exit;
-}
+   }
 
 Write-Host "Continuing with setup..." -ForegroundColor Yellow
 
@@ -235,3 +215,6 @@ if ($PSVersionTable.PSVersion.Major -ge 3)
 #    $_.Name -match "McAfee LiveSafe" 
 #}
 #$app.Uninstall()
+
+# Debugging Pause
+Pause
