@@ -120,6 +120,8 @@ if ($PSVersionTable.PSVersion.Major -ge 3)
 	Stop-Transcript
 }
 
+Write-Host "Script Complete! This PC will now restart to apply some changes :)"
+
 Start-Sleep -Seconds 30
 
 Restart-Computer
