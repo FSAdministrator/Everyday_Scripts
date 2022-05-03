@@ -59,7 +59,6 @@ Contact info: Felix Saville - Felix.Saville@mb3.nz
 Script version: $ScriptVersion
 "
 
-
 # Github Folder Download 
 function DownloadGitHubRepository 
 { 
@@ -70,7 +69,7 @@ function DownloadGitHubRepository
     [string] $ZipFile = "Removal-Tool.zip"
 
     [Parameter(Mandatory=$False)] 
-    [string] $Location = "c:\temp"
+    [string] $Location = "c:\temp\RemovalTool\"
  
     # download the zip 
     Write-Host 'Starting downloading the GitHub Repository...'
@@ -88,11 +87,13 @@ function DownloadGitHubRepository
     Write-Host "Zip File Deleted..."
 }
 
+DownloadGitHubRepository
+
 # Run Cleanup Program- Removes Program
 
 Write-Host "Starting Removal Program..."
    
-.\Mccleanup.exe -p StopServices,MFSY,PEF,MXD,CSP,Sustainability,MOCP,MFP,APPSTATS,Auth,EMproxy,FWdiver,HW,MAS,MAT,MBK,MCPR,McProxy,McSvcHost,VUL,MHN,MNA,MOBK,MPFP,MPFPCU,MPS,SHRED,MPSCU,MQC,MQCCU,MSAD,MSHR,MSK,MSKCU,MWL,NMC,RedirSvc,VS,REMEDIATION,MSC,YAP,TRUEKEY,LAM,PCB,Symlink,SafeConnect,MGS,WMIRemover,RESIDUE -v -s
+C:\temp\RemovalTool\Mccleanup.exe -p StopServices,MFSY,PEF,MXD,CSP,Sustainability,MOCP,MFP,APPSTATS,Auth,EMproxy,FWdiver,HW,MAS,MAT,MBK,MCPR,McProxy,McSvcHost,VUL,MHN,MNA,MOBK,MPFP,MPFPCU,MPS,SHRED,MPSCU,MQC,MQCCU,MSAD,MSHR,MSK,MSKCU,MWL,NMC,RedirSvc,VS,REMEDIATION,MSC,YAP,TRUEKEY,LAM,PCB,Symlink,SafeConnect,MGS,WMIRemover,RESIDUE -v -s
 
 Write-Host "Removal Complete!"
 
@@ -108,6 +109,8 @@ Remove-Item -Force -Recurse -LiteralPath "C:\Program Files\Common Files\McAfee*"
 Remove-Item -Force -Recurse -LiteralPath "C:\Program Files\Common Files\McAfee"
 Remove-Item -Force -Recurse -LiteralPath "C:\Program Files (X86)\McAfee*"
 Remove-Item -Force -Recurse -LiteralPath "C:\Program Files (X86)\McAfee"
+Remove-item -Force -Recurse -LiteralPath "C:\temp\RemovalTool*"
+Remove-item -Force -Recurse -LiteralPath "C:\temp\RemovalTool"
 
 ## Stops Log.
 if ($PSVersionTable.PSVersion.Major -ge 3)
