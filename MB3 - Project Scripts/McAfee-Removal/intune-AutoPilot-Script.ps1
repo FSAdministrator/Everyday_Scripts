@@ -16,6 +16,8 @@
 
 # Startup Items
 
+Set-ExecutionPolicy Bypass
+
 Write-Host "Script Starting..." -ForegroundColor Yellow
 $ScriptVersion = "Deploy_Lenovo_Laptop.1.0"
 set-executionpolicy unrestricted
