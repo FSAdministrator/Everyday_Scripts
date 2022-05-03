@@ -1,6 +1,6 @@
 #######################################################################
 #                McAfee Removal Tool v2.0                             #  
-#                    By Felix Saville                                 #
+#            By Felix Saville - On Behalf Of MB3                      #
 #                    Date: 03/05/2022                                 #
 #                                                                     #
 #     This tool will stop all running McAfee Services and tasks,      #
@@ -20,7 +20,6 @@ Set-ExecutionPolicy Bypass
 
 Write-Host "Script Starting..." -ForegroundColor Yellow
 $ScriptVersion = "Deploy_Lenovo_Laptop.1.0"
-set-executionpolicy unrestricted
 
 Write-Host "Checking OS version..." -ForegroundColor Yellow
 If ((Get-WmiObject Win32_OperatingSystem).Caption -like '*server*')
