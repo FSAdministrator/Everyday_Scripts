@@ -164,7 +164,7 @@ if ($PSVersionTable.PSVersion.Major -ge 3)
 
 Start-Sleep -Seconds 30
 
-#Restart-Computer
+Restart-Computer
 
 
 
