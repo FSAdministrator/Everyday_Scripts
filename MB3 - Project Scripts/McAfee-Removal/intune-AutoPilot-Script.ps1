@@ -113,6 +113,8 @@ Remove-Item -Force -Recurse -LiteralPath "C:\Program Files (X86)\McAfee"
 Remove-item -Force -Recurse -LiteralPath "C:\temp\RemovalTool*"
 Remove-item -Force -Recurse -LiteralPath "C:\temp\RemovalTool"
 
+Write-Host "Script Complete! This PC will now restart to apply some changes :)"
+
 ## Stops Log.
 if ($PSVersionTable.PSVersion.Major -ge 3)
 {
@@ -120,10 +122,16 @@ if ($PSVersionTable.PSVersion.Major -ge 3)
 	Stop-Transcript
 }
 
-Write-Host "Script Complete! This PC will now restart to apply some changes :)"
+$ButtonType = [System.Windows.Forms.MessageBoxButtons]::OK
 
-[System.Windows.MessageBox]::Show("McAfee Uninstall Complete! Rebooting!", "Script Message", "OK", "Nones")
+$MessageIcon = [System.Windows.Forms.MessageBoxIcon]::Information
 
-Start-Sleep -Seconds 30
+$MessageBody = "McAfee Uninstall Complete! System will restart!"
 
-Restart-Computer
+$MessageTitle = "McAfee Uninstall Script"
+
+$Result = [System.Windows.Forms.MessageBox]::Show($MessageBody,$MessageTitle,$ButtonType,$MessageIcon)
+
+Start-Sleep -Seconds 15
+
+Restart-Computer -Force
