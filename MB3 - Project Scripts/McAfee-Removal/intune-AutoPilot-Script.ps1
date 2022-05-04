@@ -18,6 +18,16 @@
 
 Set-ExecutionPolicy Bypass
 
+$ButtonType1 = [System.Windows.Forms.MessageBoxButtons]::OK
+
+$MessageIcon1 = [System.Windows.Forms.MessageBoxIcon]::Information
+
+$MessageBody1 = "McAfee Script Has started! Please Wait!"
+
+$MessageTitle1 = "McAfee Uninstall Script"
+
+[System.Windows.Forms.MessageBox]::Show($MessageBody1,$MessageTitle1,$ButtonType1,$MessageIcon1)
+
 Write-Host "Script Starting..." -ForegroundColor Yellow
 $ScriptVersion = "Deploy_Lenovo_Laptop.1.0"
 
@@ -122,15 +132,15 @@ if ($PSVersionTable.PSVersion.Major -ge 3)
 	Stop-Transcript
 }
 
-$ButtonType = [System.Windows.Forms.MessageBoxButtons]::OK
+$ButtonType2 = [System.Windows.Forms.MessageBoxButtons]::OK
 
-$MessageIcon = [System.Windows.Forms.MessageBoxIcon]::Information
+$MessageIcon2 = [System.Windows.Forms.MessageBoxIcon]::Information
 
-$MessageBody = "McAfee Uninstall Complete! System will restart!"
+$MessageBody2 = "McAfee Uninstall Complete! System will restart!"
 
-$MessageTitle = "McAfee Uninstall Script"
+$MessageTitle2 = "McAfee Uninstall Script"
 
-$Result = [System.Windows.Forms.MessageBox]::Show($MessageBody,$MessageTitle,$ButtonType,$MessageIcon)
+[System.Windows.Forms.MessageBox]::Show($MessageBody2,$MessageTitle2,$ButtonType2,$MessageIcon2)
 
 Start-Sleep -Seconds 15
 
