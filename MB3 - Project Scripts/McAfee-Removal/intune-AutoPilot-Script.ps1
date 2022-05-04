@@ -122,6 +122,8 @@ if ($PSVersionTable.PSVersion.Major -ge 3)
 
 Write-Host "Script Complete! This PC will now restart to apply some changes :)"
 
+[System.Windows.MessageBox]::Show("McAfee Uninstall Complete! Rebooting!", "Script Message", "OK", "Nones")
+
 Start-Sleep -Seconds 30
 
 Restart-Computer
